@@ -30,6 +30,10 @@ void Colorize(unsigned short c){
     SetConsoleTextAttribute(Color , c);
 }
 
+void delay(unsigned int ms){
+    clock_t goal = ms + clock();
+    while (goal > clock());
+}
 
 void Load(){
     FILE *fp;
@@ -46,7 +50,7 @@ void Save(){
     char data[255];
 
     sprintf(data, "%d", Pts);
-    fp = fopen("/SSS.snk", "w");
+    fp = fopen("/SSS.txt", "w");
     fputs(data, fp);
     fclose(fp);
 }
